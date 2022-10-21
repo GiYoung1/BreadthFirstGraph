@@ -1,0 +1,9 @@
+A,B,E,I,O,U,Z
+B,A,E,I,O,Z
+E,A,O,U
+I,B,E
+O,A,Z
+U,Z
+Z,A,E,I,O,U
+
+
