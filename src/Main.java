@@ -3,14 +3,31 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Map<String, List<String>> graph2 = readFileIntoMap("Graph1.txt");
+        Scanner keyb = new Scanner(System.in);
+        System.out.println("Which graph do you want to choose?");
+        String filename = keyb.nextLine();
+
+        Map<String, List<String>> graph2 = readFileIntoMap(filename);
+        System.out.print("Here is the graph " + graph2);
+        System.out.println();
+
         //System.out.println(graph2);
         ArrayList<String> pathfinder = searchForPath(graph2);
         System.out.println("The path is " + pathfinder);
-        Scanner use = new Scanner(System.in);
-        System.out.println("New starting point? \n " +
-                "Or Quit");
-        String chosen = use.nextLine();
+//        while(){
+//            System.out.println("New starting point? \n " +
+//                "Or Quit");
+//            Scanner use = new Scanner(System.in);
+//            String chosen = use.nextLine();
+//            String go = "New starting point?";
+//            if(chosen.equals(go)){
+//                pathfinder = searchForPath(graph2);
+//            }
+//        }
+
+
+
+
 
 
 
@@ -22,14 +39,13 @@ public class Main {
         ArrayList<String> path = new ArrayList<>();
         Scanner keyb = new Scanner(System.in);
         System.out.println("What is the starting point?");
-        String start = keyb.nextLine();
-        Scanner keyg = new Scanner(System.in);
+        String start = keyb.nextLine().toUpperCase();
         System.out.println("What is the endpoint?");
-        String finish = keyg.nextLine();
+        String finish = keyb.nextLine().toUpperCase();
         path = bfSearch(graph2, start, finish);
         //System.out.println(path + "\n" + start + finish + "\n");
-        System.out.println("The system searches through " + path);
-        System.out.println("The path starts at " +start + " it finishes at " + finish);
+        System.out.println("The system searches through the queue" + path);
+        System.out.println("The path starts at " + start + " it finishes at " + finish);
 
 
 
@@ -50,7 +66,7 @@ public class Main {
                 if (!currentPath.contains(nabor)) {
                     List<String> newPath = new ArrayList<>(currentPath);
                     newPath.add(nabor);
-                    System.out.println("The system connects to " + newPath);
+                    //System.out.println("The system connects to " + newPath);
                     if (nabor.equals(finish)) {
                         return (ArrayList<String>) newPath;
                     } else {
